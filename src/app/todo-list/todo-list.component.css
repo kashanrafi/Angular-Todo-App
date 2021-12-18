@@ -1,0 +1,53 @@
+.container2{
+    width: 100%;
+    padding: 0;
+    
+}
+.list{
+    padding: 0;
+}  
+.item{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 5px;
+    
+}
+.output{
+    margin-left: 1px;
+    background-color: whitesmoke;
+    border: none;
+    border-right: 3px solid #2074d4;
+    border-radius: 0;
+    margin-bottom: 7px;
+    height: 45px;
+    
+    
+
+}
+h3{
+    text-align: center;
+    margin-right: 15px;
+    
+}
+.condition{
+    text-align: center;
+    margin-right: 15px;
+}
+.edtbtn{
+    position: absolute;
+    right: 60px;
+}
+.delbtn{
+    position: absolute;
+    right: -5px;
+}
+.upbtn{
+    position: absolute;
+    right: 110px;
+}
+.downbtn{
+    position: absolute;
+    right: 150px;
+}

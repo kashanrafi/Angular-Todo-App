@@ -1,0 +1,25 @@
+.container{
+    width: 110%;
+    padding: 0;
+    margin: 0 auto;
+}
+.formClass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-left: -15px;
+    
+}
+h2{
+    text-align: center;
+    margin-left: 10px;
+}
+
+.btn1{
+    
+     margin-left: 8px ;
+     width: 50%; 
+    
+}
+
