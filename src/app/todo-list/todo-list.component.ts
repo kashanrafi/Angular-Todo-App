@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -8,54 +9,86 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 })
 export class TodoListComponent implements OnInit {
   localItem: any;
-  @Input() parentData: any[];
+  dataRecive: any;
+  // @Input()
+  items: any[] = [];
   arrowIcon = faArrowUp;
   downIcon = faArrowDown;
-  preRow: any;
-  showModal: boolean = false;
   constructor() {
-    this.localItem = localStorage.getItem("parentData");
-    if (this.localItem == null) {
-      this.parentData = [];
-    }
-    else {
-      this.parentData = JSON.parse(this.localItem);
-    }
+   
   }
 
   ngOnInit(): void {
+    this.dataRecive = localStorage.getItem("items");
+    if (this.dataRecive == null) {
+      this.items = [];
+    }
+    else{
+      this.items = JSON.parse(this.dataRecive);
+    }
+
+    // this.localItem = localStorage.getItem("items");
+
+    // if (this.localItem == null) {
+    //   this.items = [];
+    // }
+    // else {
+    //   this.items = JSON.parse(this.localItem);
+
+    // }
+
+
+    console.log(this.items, 'TOD_LIST')
   }
   delItems(index: any) {
     console.log(index);
-    this.parentData.splice(index, 1);
-    localStorage.setItem("items", JSON.stringify(this.parentData));
+    this.items.splice(index, 1);
+    localStorage.setItem("items", JSON.stringify(this.items));
   }
   editItems(index: number) {
-    console.log(this.parentData[index]);
-    let title = this.parentData[index];
+    console.log(this.items[index]);
+    let title = this.items[index];
     let res = prompt("Enter new value", title);
     if (res !== null && res !== "") {
-      this.parentData[index] = res;
+      this.items[index] = res;
     }
-    localStorage.setItem("items", JSON.stringify(this.parentData));
+    localStorage.setItem("items", JSON.stringify(this.items));
   }
   moveUp(item: string, index: number) {
 
     if (index > 0) {
-      const tmp = this.parentData[index - 1];
-      this.parentData[index - 1] = this.parentData[index];
-      this.parentData[index] = tmp;
+      const tmp = this.items[index - 1];
+      this.items[index - 1] = this.items[index];
+      this.items[index] = tmp;
     }
-    localStorage.setItem("items", JSON.stringify(this.parentData));
+    else if (index == 0) {
+      this.items.push(item);
+      this.items.splice(index, index + 1);
+
+      // const tmp = this.items[this.items.length - 1];
+      // this.items[this.items.length - 1] = this.items[index];
+      // this.items[index] = tmp;
+    }
+    localStorage.setItem("items", JSON.stringify(this.items));
 
   }
   moveDown(item: string, index: number) {
-    if (index < this.parentData.length && index != this.parentData.length - 1) {
-      const tmp = this.parentData[index + 1];
-      this.parentData[index + 1] = this.parentData[index];
-      this.parentData[index] = tmp;
+    if (index < this.items.length && index != this.items.length - 1) {
+      const tmp = this.items[index + 1];
+      this.items[index + 1] = this.items[index];
+      this.items[index] = tmp;
     }
-    localStorage.setItem("items", JSON.stringify(this.parentData));
+    else if (index == this.items.length - 1) {
+
+      this.items.unshift(item);
+      this.items.splice(index,);
+
+
+      // const tmp = this.items[0];
+      // this.items[0] = this.parentData[index];
+      // this.parentData[index] = tmp;
+    }
+    localStorage.setItem("items", JSON.stringify(this.items));
   }
 
 }

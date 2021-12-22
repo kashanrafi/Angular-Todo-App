@@ -1,36 +1,15 @@
+<div class="container1">
 <h3>todo's-list!</h3>
-<!-- bootstrap modal for edit list -->
-<!-- <div id="myModal" class="modal fade" role="dialog" [ngClass]="{'show': showModal}">
-    <div class="modal-dialog">
-      
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Edit List: </h4> 
-        </div>
-        <div class="modal-body">
-            <input  name="newTask" class="form-control inp" value="" type="text"
-            placeholder="Enter items" required>
-        
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-  
-    </div>
-  </div> -->
-<div class="container2">
-    <div *ngIf="this.parentData.length === 0; else elseBlock" class="condition">No todo's here!</div>
 
 
+    <div *ngIf="this.items.length === 0; else elseBlock" class="condition">No todo's here!</div>
     <ng-template #elseBlock>
-        <div *ngFor="let item of parentData; let index = index" class="row mt-1 form-control output">
+        <div *ngFor="let item of items; let index = index" class="row mt-1 form-control output">
 
             <div class="list">
                 <li class="item">{{item}}
-                    <input type="button" class="btn btn-danger btn-sm edtbtn " data-toggle="modal"
-                        data-target="#myModal" (click)="editItems(index)" value="Edit">
+                    <input type="button" class="btn btn-danger btn-sm edtbtn "
+                         (click)="editItems(index)" value="Edit">
                     <input type="button" class="btn btn-danger btn-sm delbtn " (click)="delItems(index)" value="Delete">
                     <button class="btn btn-primary btn-sm upbtn" (click)="moveDown(item, index)">
                         <fa-icon [icon]="downIcon"></fa-icon>
@@ -42,4 +21,39 @@
             </div>
         </div>
     </ng-template>
+
 </div>
+
+<!-- <form [formGroup]="editForm" novalidate>
+  
+  <div class="form-group">
+    <label for="title">Title</label>
+    <div class="input-group">
+      <input formControlName="title" class="form-control">
+    </div>
+  </div>
+  
+  <div class="border text-center"> <button data-dismiss="modal" class="btn btn-info">Save Changes</button> </div>
+</form> -->
+
+<!-- bootstrap modal for edit list -->
+<!-- <div id="myModal" class="modal fade" role="dialog" #content>
+    <div class="modal-dialog">
+      
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" (click)="modal.dismiss()">&times;</button>
+          <h4 class="modal-title">Edit List: </h4> 
+        </div>
+        <div class="modal-body">
+            <input  name="newTask" class="form-control inp" value="" type="text"
+            placeholder="Enter items" required>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.close()">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div> -->

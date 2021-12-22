@@ -8,37 +8,38 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./add-list.component.css']
 })
 export class AddListComponent implements OnInit {
-  // localItem: any;
-  // items: any[] = []; 
+  localItem: any;
+  item: any[] = []; 
   newTask: string = '';
 
-  @Output() childeData = new EventEmitter<any>();
+  // @Output() childeData = new EventEmitter<any>();
   constructor() {
-    //  this.localItem = localStorage.getItem("newTask");
-    //  if (this.localItem == null) {
-    //    this.newTask = '';
-    //  }
-    //  else{
-    //    this.newTask = JSON.parse(this.localItem);
-    //  }
+     this.localItem = localStorage.getItem("items");
+     if (this.localItem == null) {
+       this.item = [];
+     }
+     else{
+       this.item = JSON.parse(this.localItem);
+     }
 
   }
 
   ngOnInit(): void {
   }
 
-  changeHandler(event:any){
-    console.log(event,'EVENT')
-    // this.newTask = event.target.value;
-  }
+  // changeHandler(event:any){
+  //   console.log(event,'EVENT')
+  //   // this.newTask = event.target.value;
+  // }
   addItems() {
     if (this.newTask == '') {
     }
     else {
-      this.childeData.emit(this.newTask);
+      // this.childeData.emit(this.newTask);
+      this.item.push(this.newTask);
+      localStorage.setItem("items", JSON.stringify(this.item));
       this.newTask = '';
-      // this.items.push(this.newTask);
-      // localStorage.setItem("newTask", JSON.stringify(this.newTask));
+      
     }
   }
 
