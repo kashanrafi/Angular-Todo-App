@@ -9,25 +9,27 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 })
 export class TodoListComponent implements OnInit {
   localItem: any;
-  dataRecive: any;
   // @Input()
-  items: any[] = [];
+  items: string[] = [];
   arrowIcon = faArrowUp;
   downIcon = faArrowDown;
   constructor() {
-   
+
   }
 
   ngOnInit(): void {
-    this.dataRecive = localStorage.getItem("items");
-    if (this.dataRecive == null) {
+    
+    this.localItem = localStorage.getItem("items");
+    if (this.localItem == null) {
       this.items = [];
     }
-    else{
-      this.items = JSON.parse(this.dataRecive);
-    }
+    else {
 
-    // this.localItem = localStorage.getItem("items");
+      this.items = JSON.parse(this.localItem);
+    }
+    // debugger;
+
+    // this.localItem = localStorage.getItem("itemz");
 
     // if (this.localItem == null) {
     //   this.items = [];
@@ -80,13 +82,12 @@ export class TodoListComponent implements OnInit {
     }
     else if (index == this.items.length - 1) {
 
-      this.items.unshift(item);
-      this.items.splice(index,);
+      // this.items.unshift(item);
+      // this.items.splice(index);
 
-
-      // const tmp = this.items[0];
-      // this.items[0] = this.parentData[index];
-      // this.parentData[index] = tmp;
+      const tmp = this.items[0];
+      this.items[0] = this.items[index];
+      this.items[index] = tmp;
     }
     localStorage.setItem("items", JSON.stringify(this.items));
   }

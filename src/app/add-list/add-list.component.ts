@@ -9,17 +9,17 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class AddListComponent implements OnInit {
   localItem: any;
-  item: any[] = []; 
+  items: string[] = []; 
   newTask: string = '';
 
   // @Output() childeData = new EventEmitter<any>();
   constructor() {
      this.localItem = localStorage.getItem("items");
      if (this.localItem == null) {
-       this.item = [];
+       this.items = [];
      }
      else{
-       this.item = JSON.parse(this.localItem);
+       this.items = JSON.parse(this.localItem);
      }
 
   }
@@ -36,8 +36,8 @@ export class AddListComponent implements OnInit {
     }
     else {
       // this.childeData.emit(this.newTask);
-      this.item.push(this.newTask);
-      localStorage.setItem("items", JSON.stringify(this.item));
+      this.items.push(this.newTask);
+      localStorage.setItem("items", JSON.stringify(this.items));
       this.newTask = '';
       
     }
