@@ -7,22 +7,26 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { APIDataComponent } from './api-data/api-data.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AddListComponent,
-    TodoListComponent
+    TodoListComponent,
+    APIDataComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
+    HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [APIDataComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

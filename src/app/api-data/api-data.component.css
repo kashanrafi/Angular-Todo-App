@@ -1,0 +1,14 @@
+p{
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+}
+table tr td {
+    border: 1px solid black;
+}
+th{
+    border: 1px solid black;
+}
+h3{
+    text-align: center;
+}

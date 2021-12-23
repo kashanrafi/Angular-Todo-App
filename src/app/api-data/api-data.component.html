@@ -1,0 +1,23 @@
+<p>API-data</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>User Id</th>
+    </tr>
+    <tr *ngFor="let data of apiData">
+        <td>{{data.id}}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.userId}}</td>
+    </tr>
+
+</table>
+<br>
+<hr>
+<br>
+<h3>Get Data with Querry Params</h3>
+<ul *ngFor="let data of paramData">
+    <li>{{data.id}}</li>
+    <li>{{data.country}}</li>
+    <li>{{data.tag}}</li>
+</ul>
