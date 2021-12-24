@@ -27,19 +27,7 @@ export class TodoListComponent implements OnInit {
 
       this.items = JSON.parse(this.localItem);
     }
-    // debugger;
-
-    // this.localItem = localStorage.getItem("itemz");
-
-    // if (this.localItem == null) {
-    //   this.items = [];
-    // }
-    // else {
-    //   this.items = JSON.parse(this.localItem);
-
-    // }
-
-
+  
     console.log(this.items, 'TOD_LIST')
   }
   delItems(index: any) {
